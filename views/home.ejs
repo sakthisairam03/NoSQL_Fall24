@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fit-Trac</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <div class="logo">
+            <!-- Ensure the path to the logo is correct -->
+            <img src="/images/Fitness Logo.png" alt="Fit-Trac Logo"><h1 class="logo-text">Fit-Trac</h1>
+        </div>
+        <button class="signup-btn" onclick="window.location.href='/auth/signup'">Sign Up</button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="welcome-box">
+            <h1>Welcome to Fit-Trac</h1>
+            <p class="description">Hola Fitness freaks!! We are here to support you on your fitness journey as your very own exercise partner. Simply record your everyday workouts, view lucid tutorial videos, and peruse an extensive dashboard that showcases your advancements and advantages. Get tracking now to watch the outcomes develop!</p>
+            <button class="btn" onclick="window.location.href='/auth/login'">Login</button>
+            <button class="btn" onclick="window.location.href='/auth/signup'">Sign Up</button>
+        </div>
+    </div>
+</body>
+</html>
+    <style>
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo img {
+            margin-right: 10px;
+        }
+        .logo h1 {
+            font-weight: bold;
+            font-size: 24px;
+            text-align: center;
+        }
+    </style>
