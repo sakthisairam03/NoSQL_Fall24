@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log Exercise - Fitness Tracker</title>
+  <link rel="stylesheet" href="/css/styles3.css">
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const exerciseTypeDropdown = document.getElementById("exercise-type");
+      const specificExerciseDropdown = document.getElementById("specific-exercise");
+      const setsRepsSection = document.getElementById("sets-reps-section");
+      // Exercise options based on type
+      const exercises = {
+        endurance: ["Jogging", "Walking", "Dancing", "Swimming", "Trekking", "Yardwork", "Playing", "Zumba", "Cycling"],
+        strength: ["Weight Lifting", "Push Pull Up", "Gymnasium Exercise", "Sprinting"],
+        balance: ["Meditation", "Single Leg Stand", "Tai Chi Movements", "Balance Board"],
+        flexibility: ["Stretching", "Yoga", "Tai Chi"]
+      };
+      // Function to update specific exercises based on type
+      function updateSpecificExercise() {
+        const selectedType = exerciseTypeDropdown.value.toLowerCase();
+        specificExerciseDropdown.innerHTML = ""; // Clear current options
+        if (exercises[selectedType]) {
+          exercises[selectedType].forEach(function(exercise) {
+            const option = document.createElement("option");
+            option.value = exercise.toLowerCase().replace(/\s+/g, '_');
+            option.textContent = exercise;
+            specificExerciseDropdown.appendChild(option);
+          });
+        }
+
+        // Toggle sets/reps for strength exercises
+        if (selectedType === "strength") {
+          setsRepsSection.style.display = "block";
+        } else {
+          setsRepsSection.style.display = "none";
+        }
+      }
+      // Listen for changes on exercise type dropdown
+      exerciseTypeDropdown.addEventListener("change", updateSpecificExercise);
+      // Initial call to populate the correct options
+      updateSpecificExercise();
+    });
+  </script>
+</head>
+<body>
+  <div class="navbar">
+    <div class="logo">
+      <img src="/images/Fitness logo.png" alt="Fit-Trac Logo">
+      <h2 class="logo-text">Fit-Trac</h2>
+    </div>
+    <div class="nav-buttons">
+      <a href="/dashboard" class="nav-link">Dashboard</a>
+      <a href="/auth/logout" class="nav-link">Logout</a>
+    </div>
+  </div>
+
+  <div class="main-container">
+    <div class="form-container">
+      <h1 class="main-title">Log Your Exercise</h1>
+      <form action="/exercise/log" method="POST" class="exercise-form">
+        <div class="form-group">
+          <label for="exercise-type" class="form-label">Type of Exercise</label>
+          <select id="exercise-type" name="exerciseType" class="form-input" required>
+            <option value="" selected disabled hidden>Type of Exercise</option>
+            <option value="endurance">Endurance</option>
+            <option value="strength">Strength</option>
+            <option value="balance">Balance</option>
+            <option value="flexibility">Flexibility</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="specific-exercise" class="form-label">Exercise</label>
+          <select id="specific-exercise" name="specificExercise" class="exercise-form-input" required></select>
+        </div>
+        <div class="form-group">
+          <label for="duration-hours" class="form-label">Exercise Duration</label>
+          <input type="number" id="duration-hours" name="durationHours" class="form-input duration" placeholder="Hours" min="0" required>
+          <input type="number" id="duration-minutes" name="durationMinutes" class="form-input duration" placeholder="Minutes" min="0" required>
+        </div>
+        <div id="sets-reps-section" class="sets-reps-group" style="display: none;">
+          <label for="sets" class="form-label">Sets</label>
+          <input type="number" id="sets" name="sets" class="form-input" min="1" placeholder="Sets">
+          <label for="reps" class="form-label">Reps</label>
+          <input type="number" id="reps" name="reps" class="form-input" min="1" placeholder="Reps">
+        </div>
+        <button type="submit" class="submit-button">Add Exercise</button>
+      </form>
+    <!-- Video Display Section -->
+    <% if (videoPath) { %>
+      <section class="video-section">
+        <h2 class="video-title">Exercise Video</h2>
+        <video class="exercise-video" controls>
+          <source src="<%= videoPath %>" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </section>
+    <% } %>
+    </div>
+  </div>
+</body>
+</html>

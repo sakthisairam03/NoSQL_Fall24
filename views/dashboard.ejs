@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Fitness Tracker</title>
+  <link rel="stylesheet" href="/css/styles4.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script> <!-- Load Chart.js -->
+</head>
+<body>
+  <div class="navbar">
+    <div class="logo">
+      <img src="/images/Fitness logo.png" alt="Fit-Trac Logo">
+      <h2 class="logo-text">Fit-Trac</h2>
+    </div>
+    <div class="nav-buttons">
+      <a href="/exercise" class="nav-link">Log Exercise</a>
+      <a href="/auth/logout" class="nav-link">Logout</a>
+    </div>
+  </div>
+
+  <main>
+    <h1 class="main-title">Your Fitness Dashboard</h1>
+    <!-- Recent Exercises Section -->
+    <section class="recent-exercises">
+      <h2>Recent Exercises</h2>
+      <ul>
+        <% exercises.forEach(function(exercise) { %>
+          <li>
+            <strong>Type:</strong> <%= exercise.exerciseType %> |
+            <strong>Exercise:</strong> <%= exercise.specificExercise %> |
+            <strong>Duration:</strong> <%= exercise.duration.hours %> hours <%= exercise.duration.minutes %> minutes |
+            <strong>Calories Burnt:</strong> <%= exercise.caloriesBurnt %> |
+            <strong>Body Fat Reduction:</strong> <%= exercise.bodyFatReduction %>% 
+          </li>
+        <% }); %>
+      </ul>
+    </section>
+    <!-- Visualization Section -->
+    <section class="visualization">
+      <h2>Summary</h2>
+      <div style="display: flex; justify-content: space-around;">
+        <canvas id="caloriesChart" width="15" height="15"></canvas>
+        <canvas id="fatReductionChart" width="300" height="300"></canvas>
+        <canvas id="streakChart" width="300" height="300"></canvas>
+      </div>
+    </section>
+    </main>
+    <script>
+      const totalCalories = <%= totalCalories %>;
+      const totalBodyFatReduction = <%= totalBodyFatReduction %>;
+      const workoutStreak = <%= workoutStreak %>;
+      const commonOptions = {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'top',
+            labels: {
+              color: '#FFFFFF' // Set legend text color to white
+            }
+          }
+        }
+      };
+    
+      // Calories Chart
+      const caloriesCtx = document.getElementById('caloriesChart').getContext('2d');
+      new Chart(caloriesCtx, {
+        type: 'doughnut',
+        data: {
+          labels: ['Calories Burnt', 'Goal: Assuming 100000       '],
+          datasets: [{
+            data: [totalCalories, 100000 - totalCalories],
+            backgroundColor: ['#EB6545', '#FFDCD3']
+          }]
+        },
+        options: commonOptions
+      });
+    
+      // Body Fat Reduction Chart
+      const fatReductionCtx = document.getElementById('fatReductionChart').getContext('2d');
+      new Chart(fatReductionCtx, {
+        type: 'doughnut',
+        data: {
+          labels: ['Fat Reduction%', 'Goal%'],
+          datasets: [{
+            data: [totalBodyFatReduction, 100 - totalBodyFatReduction],
+            backgroundColor: ['#EB6545', '#FFDCD3']
+          }]
+        },
+        options: commonOptions
+      });
+    
+      // Workout Streak Chart
+      const streakCtx = document.getElementById('streakChart').getContext('2d');
+      new Chart(streakCtx, {
+        type: 'bar',
+        data: {
+          labels: ['Workout Streak'],
+          datasets: [{
+            label: 'Days',
+            data: [workoutStreak],
+            backgroundColor: ['#EB6545']
+          }]
+        },
+        options: {
+          ...commonOptions,
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: {
+                color: '#FFFFFF' // Set ylabel text color to white
+              },
+              suggestedMax: 365
+            },
+            x: {
+              ticks: {
+                color: '#FFFFFF' // Set xlabel text color to white
+              }
+            }
+          }
+        }
+      });
+    </script>
+        </main>
+      </body>
+</html>

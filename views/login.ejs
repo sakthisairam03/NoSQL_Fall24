@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fit-Trac - Login</title>
+    <link rel="stylesheet" href="/css/styles1.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">
+            <img src="/images/Fitness logo.png" alt="Fit-Trac Logo">
+            <h2 class="logo-text">Fit-Trac</h2>
+        </div>
+        <!-- Home link and Sign Up link -->
+        <div class="nav-links">
+            <a href="/" class="nav-link">Home</a>
+        </div>
+    </div>
+
+    <!-- Login Form -->
+    <div class="container">
+        <div class="login-box">
+            <h1>Login to Your Account</h1>
+            <form method="POST" action="/auth/login">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+
+                <button type="submit" class="btn">Login</button>
+            </form>
+
+            <p>Don’t Have an account? <a href="/auth/signup">SignUp Here</a></p>
+        </div>
+    </div>
+</body>
+</html>
