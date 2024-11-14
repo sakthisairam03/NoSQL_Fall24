@@ -1,6 +1,6 @@
 # NoSQL_Fall24
 
-Update the videos path in /public/videos/
+NOTE: Update the videos path in /public/videos/
 
 ![image](https://github.com/user-attachments/assets/bdd754f7-5497-4b37-a04c-1736a7a883fe)
 ![image](https://github.com/user-attachments/assets/731061cc-6c86-4bf7-b99f-773d3fbff086)
