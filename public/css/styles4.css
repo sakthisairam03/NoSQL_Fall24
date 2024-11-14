@@ -1,0 +1,178 @@
+/* styles4.css */
+
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Body styling */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f1f8f9;
+    background-size: cover;
+    background-position: flex;
+    color: #333;
+    background-image: url('/images/bg.jpg');
+  }
+  .navbar {
+    background-color: #156B83;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    align-items: center;
+}
+.logo-text{
+    color: white;
+}
+.navbar .logo {
+    display: flex;
+    align-items: center;
+}
+.navbar .logo img {
+    width: 40px;
+    margin-right: 10px;
+    padding-left: 5px;
+}
+.nav-link {
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    padding: 8px 13px;
+    background-color: #0f3f42;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+.nav-link:hover {
+    background-color: #ff6347;
+}
+.main-title{
+    color: black;
+}
+  /* Header styling */
+  /* header {
+    background-color: #2a7b84;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  } */
+  
+  /* .logo-text {
+    font-size: 24px;
+    color: #fff;
+    font-weight: bold;
+  }
+   */
+  /* .nav-buttons a {
+    color: #fff;
+    margin-left: 20px;
+    padding: 8px 15px;
+    background-color: #ffa489;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+  }
+   */
+  /* .nav-buttons a:hover {
+    background-color: #ff806b;
+  } */
+  
+  /* Main content */
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  main h1 {
+    font-size: 32px;
+    color: #2a7b84;
+    margin-bottom: 20px;
+  }
+  
+  /* Recent Exercises Section */
+  .recent-exercises {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    width: 80%;
+    max-width: 800px;
+    border-radius: 12px;
+    margin: 15px 0;
+  }
+  .visualization {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    width: 80%;
+    max-width: 800px;
+    border-radius: 12px;
+    margin: 15px 0;
+  }
+  section h2 {
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  
+  /* section ul {
+    list-style: none;
+  } */
+  
+  section li {
+    background-color: #ffa489;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    font-size: 16px;
+    line-height: 1.5;
+    color: black;
+  }
+  
+  /* Visualization Section */
+  section div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  /* canvas {
+    background-color: #ffa489;
+    padding: 20px;
+    border-radius: 15px;
+  } */
+  
+  /* Styling individual charts */
+  #caloriesChart,
+  #fatReductionChart,
+  #streakChart {
+    max-width: 150px;
+    max-height: 250px;
+  }
+  
+  @media screen and (max-width: 768px) {
+    header, main, section {
+      width: 100%;
+    }
+  
+    .nav-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .nav-buttons a {
+      margin: 5px 0;
+    }
+  
+    section div {
+      flex-direction: column;
+    }
+  
+    canvas {
+      margin: 15px 0;
+    }
+  }
+  
